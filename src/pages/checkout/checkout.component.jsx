@@ -6,6 +6,7 @@ import {
   selectCartTotal,
 } from "../../redux/cart/cart.selectors";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
+import StripeCheckoutButton from "../../components/stripe-button/strip-button.component";
 
 import "./checkout.style.scss";
 const checkoutPage = ({ cartItems, total }) => (
@@ -33,6 +34,14 @@ const checkoutPage = ({ cartItems, total }) => (
     <div className="total">
       <span>total:${total}</span>
     </div>
+    <div className="test-warning">
+      *please use the following test credit card for payment*
+      <br />
+      4242 4242 4242 4242 <br />
+      -expire data: any time future
+      <br /> -CVV:123/321/888
+    </div>
+    <StripeCheckoutButton price={total} />
   </div>
 );
 const mapStateToProps = createStructuredSelector({
